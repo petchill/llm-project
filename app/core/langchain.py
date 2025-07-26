@@ -12,7 +12,8 @@ def init_model():
         os.environ["OPENAI_API_KEY"] = getpass.getpass(
             "Enter API key for OpenAI: ")
 
-    model = init_chat_model("gpt-4o-mini", model_provider="openai")
+    model = init_chat_model(
+        "gpt-4o-mini", model_provider="openai", temperature=2.2, max_tokens=20)
 
     return model
 
@@ -31,7 +32,10 @@ def init_chain():
             ("human", "{question}"),
         ]
     )
-    chain = prompt | ChatOpenAI()
+    chain = prompt | ChatOpenAI(
+        model="gpt-4o",
+        temperature=0,
+    )
 
     chain_with_history = RunnableWithMessageHistory(
         chain,
