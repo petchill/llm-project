@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 
-from app.core.langchain import llm_model
 from app.core.langchain import init_chain_with_agent
 
 
