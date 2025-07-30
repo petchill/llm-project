@@ -1,5 +1,5 @@
 from . import api
-from .chat import post_chat_with_agent_name
+from .chat import post_chat_name_and_hobbies, post_chat_with_agent_name
 
 
 @api.route('/chat', methods=['POST'])
@@ -25,3 +25,8 @@ def post_code():
 @api.route('/chat/tone', methods=['POST'])
 def post_tone():
     return post_chat_with_agent_name("tone rewriter")
+
+
+@api.route('/chat/name-hobbies', methods=['POST'])
+def post_name_hobbies():
+    return post_chat_name_and_hobbies()
